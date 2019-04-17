@@ -1,13 +1,13 @@
-import path from 'path'
+import { join, resolve } from 'path'
 import webpack from 'webpack'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
-	entry: ['babel-polyfill', './src/index.js'],
+	entry: join(__dirname, 'src', 'index.js'),
 	// target: 'node',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: resolve(__dirname, 'dist'),
 		// publicPath: '/dist/',
 		filename: '[hash].bundle.js',
 	},
@@ -19,10 +19,10 @@ export default {
 				exclude: /node_modules/,
 				use: ['babel-loader'],
 			},
-			{
-				test: /\.scss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
-			},
+			// {
+			// 	test: /\.scss$/,
+			// 	use: ['style-loader', 'css-loader', 'sass-loader'],
+			// },
 		],
 	},
 	resolve: {
@@ -34,7 +34,7 @@ export default {
 		new HtmlWebpackPlugin({ template: './index.html' }),
 	],
 	devServer: {
-		contentBase: path.join(__dirname, './'),
+		contentBase: join(__dirname, './'),
 		port: 9000,
 	},
 }

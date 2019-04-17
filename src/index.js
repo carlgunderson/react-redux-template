@@ -1,9 +1,15 @@
-import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { Provider } from 'react-redux'
+
+import store from './redux/middleware/Provider'
 import App from './components/App'
 
-render(<Router><App /></Router>, document.querySelector('#app-root'))
+render(
+	<Provider store={ store }>
+		<App />
+	</Provider>,
+	document.querySelector('#app-root')
+)
 
 module.hot.accept()

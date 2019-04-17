@@ -1,17 +1,12 @@
-export const defaultFetchOptions = {
-	get: {},
-	patch: {},
-	put: {},
-	post: {},
-	delete: {}
+const headers = {
+	'Content-Type': 'application/json',
+	'Accept': 'application/json',
 }
 
-const checkStatus = response => {
-	if (response.status >= 200 && response.status < 300)
-		return response
-	else {
-		const error = new Error(response.statusText)
-		error.response = response
-		throw error
-	}
+export default {
+	get: { type: 'GET', headers },
+	patch: body => ({ type: 'PATCH', headers, body: JSON.stringify(body) }),
+	put: body => ({ type: 'PUT', headers, body: JSON.stringify(body) }),
+	post: body => ({ type: 'POST', headers, body: JSON.stringify(body) }),
+	delete: body => ({ type: 'DELETE', headers, body: JSON.stringify(body) })
 }
