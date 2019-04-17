@@ -10,7 +10,7 @@ import ModalContainer from '../modals/ModalContainer'
 const App = ({ addExample }) => {
 	useEffect(() => {
 		addExample()
-			.then(res => console.log('hello'))
+			.then(res => console.log('hello', res))
 	})
 	
 	return (

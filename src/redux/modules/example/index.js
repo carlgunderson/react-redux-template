@@ -26,10 +26,10 @@ const DEFAULT_STATE = {
 export const reducer = 'example'
 
 const example = (state = DEFAULT_STATE, action) => {
-	switch (action.type) {
+	switch(action.type) {
 		case 'ADD_EXAMPLE_SUCCESS':
 			return {
-				...state.examples,
+				...state,
 				data: action.data
 			}
 		default:

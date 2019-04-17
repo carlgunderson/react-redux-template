@@ -12,4 +12,4 @@ render(
 	document.querySelector('#app-root')
 )
 
-module.hot.accept()
+// module.hot.accept()
