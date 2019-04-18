@@ -43,5 +43,5 @@ const exampleReducer = (state = DEFAULT_STATE, action) => {
 
 export default exampleReducer
 
-export const selectExample = state => state.example
+export const selectExample = state => state.example.example
 export const selectExampleProcessing = state => state.example.processing
