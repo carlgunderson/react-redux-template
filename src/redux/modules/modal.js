@@ -16,9 +16,7 @@ const DEFAULT_STATE = {
 	modalProps: null,
 }
 
-const reducer = 'modal'
-
-const modal = (state = DEFAULT_STATE, action) => {
+const modalReducer = (state = DEFAULT_STATE, action) => {
 	switch(action.type) {
 		case SHOW_MODAL:
 			return {
@@ -33,6 +31,6 @@ const modal = (state = DEFAULT_STATE, action) => {
 	}
 }
 
-export default modal
+export default modalReducer
 
 export const selectModalOpen = state => state.modal.isOpen

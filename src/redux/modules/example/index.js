@@ -1,4 +1,3 @@
-
 import * as api from '../../../api'
 
 export const ADD_EXAMPLE_REQUEST = 'ADD_EXAMPLE_REQUEST'
@@ -20,23 +19,29 @@ export const addExample = example => (dispatch, getState) => {
 }
 
 const DEFAULT_STATE = {
-	examples: []
+	example: null,
+	processing: false,
 }
 
-export const reducer = 'example'
-
-const example = (state = DEFAULT_STATE, action) => {
+const exampleReducer = (state = DEFAULT_STATE, action) => {
 	switch(action.type) {
-		case 'ADD_EXAMPLE_SUCCESS':
+		case ADD_EXAMPLE_REQUEST:
 			return {
 				...state,
-				data: action.data
+				processing: true
+			}
+		case ADD_EXAMPLE_SUCCESS:
+			return {
+				...state,
+				example: action.data,
+				processing: false
 			}
 		default:
 			return state
 	}
 }
 
-export default example
+export default exampleReducer
 
-export const selectExamples = state => state.examples
+export const selectExample = state => state.example
+export const selectExampleProcessing = state => state.example.processing
