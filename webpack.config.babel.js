@@ -36,5 +36,6 @@ export default {
 	devServer: {
 		contentBase: join(__dirname, './'),
 		port: 9000,
+		historyApiFallback: true,
 	},
 }

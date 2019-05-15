@@ -74,12 +74,3 @@ const musicReducer = (state = DEFAULT_STATE, action) => {
 }
 
 export default musicReducer
-
-export const selectArtist = state => artist => {
-	console.log('@##', state, artist)
-	return state.music.artists[artist]
-}
-export const selectArtistSongs = (state, artist) => {
-	console.log('!!!', state, artist)
-	return state.music.artists[artist] && state.music.artists[artist].songs
-}
