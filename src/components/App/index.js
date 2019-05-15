@@ -5,10 +5,10 @@ import Footer from '../Footer'
 import Header from '../Header'
 import HomePage from '../HomePage'
 import JobsPage from '../JobsPage'
-import ModalContainer from '../modals/ModalContainer'
+import ModalRoot from '../modals'
 import MusicPage from '../MusicPage'
 
-const App = ({}) => (
+const App = () => (
 	<Router>
 		<Header />
 		<main>
@@ -19,7 +19,7 @@ const App = ({}) => (
 			</Switch>
 		</main>
 		<Footer />
-		<ModalContainer />
+		<ModalRoot />
 	</Router>
 )
 

@@ -1,18 +1,29 @@
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
+import { selectModalName, selectModalData } from '../../redux/selectors'
 import ExampleModal from './ExampleModal'
+import ModalContainer from './ModalContainer'
 
-const Modal = ({ name, data }) => {
+const ModalRoot = () => {
+	const name = useSelector(selectModalName)
+	const data = useSelector(selectModalData)
+	let modal = null
+
 	switch(name) {
 		case 'example':
-			return <ExampleModal data={ data } />
+			modal = <ExampleModal data={ data } />
+			break
 		default:
-			return null
+			modal = null
+			break
 	}
+
+	return (
+		<ModalContainer>
+			{ modal }
+		</ModalContainer>
+	)
 }
 
-const mapStateToProps = (state, ownProps) => ({
-
-})
-
-export default connect(mapStateToProps)(Modal)
+export default ModalRoot

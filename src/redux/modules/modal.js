@@ -33,5 +33,6 @@ const modalReducer = (state = DEFAULT_STATE, action) => {
 
 export default modalReducer
 
+export const selectModalName = state => state.modal.name
 export const selectModalOpen = state => state.modal.isOpen
 export const selectModalData = state => state.modal.data
