@@ -1,12 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
+import Link from '../Link'
 
 const Header = () => (
-	<header style={{ height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '1em', borderBottom: '1px solid cyan' }}>
-		<p>BizX</p>
-		<img src='https://placehold.it/120x30' style={{ margin: '0em 1em' }} />
+	<header
+		style={{
+			height: '60px',
+			display: 'flex',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+			marginBottom: '1em',
+			padding: '0em 1em',
+			borderBottom: '1px solid cyan',
+		}}
+	>
+		<img src='https://placehold.it/120x30' />
 		<p>React + Redux Template</p>
-		<p><Link to='/'>Home</Link>&nbsp;|&nbsp;<Link to='/jobs'>Jobs</Link>&nbsp;|&nbsp;<Link to='/music'>Music</Link></p>
+		<nav>
+			<Link to='/' nav exact activeStyle={{ color: 'green' }}>Home</Link>
+			&nbsp;|&nbsp;
+			<Link to='/jobs' nav>Jobs</Link>
+			&nbsp;|&nbsp;
+			<Link to='/music' nav>Music</Link>
+		</nav>
 	</header>
 )
 

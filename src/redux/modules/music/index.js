@@ -20,6 +20,9 @@ export const getArtist = artist => (dispatch, getState) => {
 		})
 }
 
+// We can wrap API calls with a "require" to check if we've already loaded that entity
+// If we have, simply return it from state, otherwise perform the fetch
+// This is usually the function we call from components, unless we always need the latest data
 export const requireArtist = artist => (dispatch, getState) => {
 	const state = getState().music
 

@@ -43,5 +43,5 @@ const hackerNewsReducer = (state = DEFAULT_STATE, action) => {
 
 export default hackerNewsReducer
 
-export const selectJobIds = (state, id) => state.hackerNews.jobIds
+export const selectJobIds = state => state.hackerNews.jobIds
 export const selectHackerNewsProcessing = state => state.hackerNews.processing

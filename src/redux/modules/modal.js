@@ -11,21 +11,21 @@ export const hideModal = () => (dispatch, getState) => {
 }
 
 const DEFAULT_STATE = {
+	data: null,
 	isOpen: false,
 	name: '',
-	data: null,
 }
 
 const modalReducer = (state = DEFAULT_STATE, action) => {
 	switch(action.type) {
 		case SHOW_MODAL:
 			return {
-				isOpen: true
+				data: action.data,
+				isOpen: true,
+				name: action.name,
 			}
 		case HIDE_MODAL:
-			return {
-				isOpen: false
-			}
+			return DEFAULT_STATE
 		default:
 			return state
 	}
