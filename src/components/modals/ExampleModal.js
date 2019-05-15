@@ -1,11 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
+import { selectModalData } from '../../redux/selectors'
 import ModalContainer from './ModalContainer'
 
-const ExampleModal = () => (
+const ExampleModal = ({ data }) => (
 	<ModalContainer>
-		<div></div>
+		<div>
+			<h4>Modal props for ExampleModal</h4>
+			<p>{ data.dataPoint1 }<br />{ data.dataPoint2 }</p>
+		</div>
 	</ModalContainer>
 )
 
-export default ExampleModal
+const mapStateToProps = (state, ownProps) => ({
+	data: selectModalData(state),
+})
+
+export default connect(mapStateToProps)(ExampleModal)

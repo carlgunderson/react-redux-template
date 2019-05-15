@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
-import example from './modules/example'
-import modal from './modules/modal'
+import hackerNewsReducer from './modules/hackerNews'
+import modalReducer from './modules/modal'
+import musicReducer from './modules/music'
 
 export default combineReducers({
-	example,
-	modal,
+	hackerNews: hackerNewsReducer,
+	modal: modalReducer,
+	music: musicReducer,
 })

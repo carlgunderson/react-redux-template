@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 
 import ExampleModal from './ExampleModal'
 
-const Modal = ({ name, modalProps }) => {
+const Modal = ({ name, data }) => {
 	switch(name) {
 		case 'example':
-			return <ExampleModal modalProps={ modalProps } />
+			return <ExampleModal data={ data } />
 		default:
 			return null
 	}

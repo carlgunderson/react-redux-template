@@ -1,3 +1,7 @@
-import { getJson, patchJson, putJson, postJson, deleteJson } from './baseApi'
+import * as hackerNewsApi from './hackerNewsApi'
+import * as musicApi from './musicApi'
 
-export const fetchData = url => getJson(url)
+export {
+  hackerNewsApi,
+  musicApi,
+}

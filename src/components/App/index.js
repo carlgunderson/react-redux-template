@@ -1,32 +1,55 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { addExample } from '../../redux/actions'
-import { selectExample, selectExampleProcessing } from '../../redux/selectors'
+import { getJobIds, requireArtist, showModal } from '../../redux/actions'
+import { selectArtist, selectArtistSongs, selectJobIds, selectHackerNewsProcessing } from '../../redux/selectors'
 import Footer from '../Footer'
 import Header from '../Header'
 import ModalContainer from '../modals/ModalContainer'
 
-const App = ({ addExample, exampleData, exampleProcessing }) => {
+const App = ({
+	artistData,
+	artistSongs,
+	getJobIds,
+	getArtist,
+	hnProcessing,
+	jobIds,
+	showExampleModal,
+}) => {
 	useEffect(() => {
-		addExample()
-			.then(res => console.log('got some data', res))
+		getJobIds()
+			.then(res => console.log('got some job IDs', res))
 	}, [])
-	
+
+	const [artist, setArtist] = useState('')
+
 	return (
 		<div>
 			<Header />
-			{/* <Router> */}
-				{
-					exampleProcessing &&
-					<h2>Processing async request</h2>
-				}
-				{
-					exampleData &&
-					JSON.stringify(exampleData)
-				}
-			{/* </Router> */}
+			<main>
+				{/* <Router> */}
+					{
+						hnProcessing &&
+						<h2>Processing async request</h2>
+					}
+					{
+						jobIds &&
+						JSON.stringify(jobIds)
+					}
+					<br />
+					<button onClick={ showExampleModal }>Show example modal</button>
+					<br />
+					<p>Current artist: { artist || 'none' }</p>
+					<input type='text' onChange={ e => setArtist(e.target.value) } />
+					<br />
+					<button onClick={ () => getArtist(artist) }>Get artist</button>
+					<br />
+					{
+						artistData && <p>{ artistData.name }</p>
+					}
+				{/* </Router> */}
+			</main>
 			<Footer />
 			<ModalContainer />
 		</div>
@@ -34,12 +57,16 @@ const App = ({ addExample, exampleData, exampleProcessing }) => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	exampleData: selectExample(state),
-	exampleProcessing: selectExampleProcessing(state),
+	artistData: selectArtist(state)('diplo'),
+	artistSongs: selectArtistSongs(state)('diplo'),
+	jobIds: selectJobIds(state),
+	hnProcessing: selectHackerNewsProcessing(state),
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	addExample: () => dispatch(addExample()),
+	getJobIds: () => dispatch(getJobIds()),
+	getArtist: artist => dispatch(requireArtist(artist)), // Could also use ownProps
+	showExampleModal: () => dispatch(showModal('example', { dataPoint1: true, dataPoint2: false })),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

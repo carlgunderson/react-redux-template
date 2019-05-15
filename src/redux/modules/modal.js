@@ -1,7 +1,7 @@
 export const SHOW_MODAL = 'SHOW_MODAL'
 
-export const showModal = (name, modalProps) => (dispatch, getState) => {
-	dispatch({ type: SHOW_MODAL, name, modalProps })
+export const showModal = (name, data) => (dispatch, getState) => {
+	dispatch({ type: SHOW_MODAL, name, data })
 }
 
 export const HIDE_MODAL = 'HIDE_MODAL'
@@ -13,7 +13,7 @@ export const hideModal = () => (dispatch, getState) => {
 const DEFAULT_STATE = {
 	isOpen: false,
 	name: '',
-	modalProps: null,
+	data: null,
 }
 
 const modalReducer = (state = DEFAULT_STATE, action) => {
@@ -34,3 +34,4 @@ const modalReducer = (state = DEFAULT_STATE, action) => {
 export default modalReducer
 
 export const selectModalOpen = state => state.modal.isOpen
+export const selectModalData = state => state.modal.data

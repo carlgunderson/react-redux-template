@@ -2,7 +2,7 @@ import fetch from 'cross-fetch'
 
 import defaultFetchOptions from './defaultFetchOptions'
 
-export const getJson = (url = 'https://hacker-news.firebaseio.com/v0/jobstories.json') =>
+export const getJson = url =>
 	fetch(url, defaultFetchOptions.get)
 		.then(checkStatus)
 
