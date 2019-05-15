@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { requireArtist } from '../../redux/actions'
+import Button from '../common/Button'
+import TextInput from '../common/TextInput'
 
 const MusicPage = ({}) => {
 	const dispatch = useDispatch()
@@ -13,9 +15,14 @@ const MusicPage = ({}) => {
 	return (
 		<div>
 			<p>Current artist: { artist || 'none' }</p>
-			<input type='text' onChange={ e => setArtist(e.target.value) } />
+			<TextInput
+				placeholder='Search for an artist'
+				onChange={ e => setArtist(e.target.value) }
+				// Props can be passed without explicitly being used in the component, like below
+				maxLength={ 40 }
+			/>
 			<br />
-			<button onClick={ () => getArtist(artist) }>Get artist</button>
+			<Button onClick={ () => getArtist(artist) }>Get artist</Button>
 			<br />
 			{
 				artistData && <p>{ artistData.primaryGenreName }</p>

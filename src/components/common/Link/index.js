@@ -5,10 +5,12 @@ import { Link as RouterLink, NavLink } from 'react-router-dom'
 const styles = {
 	link: {
 		textDecoration: 'none',
+		cursor: 'pointer',
 	},
 }
 
 const Link = ({
+	actionLink,
 	activeStyle,
 	children,
 	exact = false,
@@ -23,6 +25,10 @@ const Link = ({
 	? <a href={ to } onClick={ onClick } target={ target } style={ styles.link }>
 			{ children }
 		</a>
+	: actionLink
+	? <span onClick={ onClick } style={ styles.link }>
+			{ children }
+		</span>
 	: nav
 	? <NavLink
 			exact
@@ -40,7 +46,9 @@ const Link = ({
 )
 
 Link.propTypes = {
+	actionLink: PropTypes.bool,
 	activeStyle: PropTypes.object,
+	children: PropTypes.node.isRequired,
 	exact: PropTypes.bool,
 	external: PropTypes.bool,
 	nav: PropTypes.bool,

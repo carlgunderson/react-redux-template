@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Link from '../Link'
+import Link from '../common/Link'
 
 const Header = () => (
 	<header
@@ -16,7 +16,7 @@ const Header = () => (
 	>
 		<img src='https://placehold.it/120x30' />
 		<p>React + Redux Template</p>
-		<nav>
+		<nav style={{ cursor: 'default' }}>
 			<Link to='/' nav exact activeStyle={{ color: 'green' }}>Home</Link>
 			&nbsp;|&nbsp;
 			<Link to='/jobs' nav>Jobs</Link>

@@ -25,6 +25,7 @@ const styles = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
+		padding: '1em',
 		backgroundColor: '#fff',
 		boxShadow: '0px 0px 7px 0px rgba(0, 0, 0, .3)',
 	},
